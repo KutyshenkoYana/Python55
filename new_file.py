@@ -6,3 +6,5 @@ b = 5 + 5
 print(b)
 
 print("lalala")
+
+print("LALA")
