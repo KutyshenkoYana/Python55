@@ -5,4 +5,6 @@ b = 5 + 5
 
 print(b)
 
-print("some text here")
+print("lalala")
+
+print("LALA")
