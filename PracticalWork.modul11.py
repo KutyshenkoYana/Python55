@@ -134,50 +134,50 @@
 # *   `daily_limit` — денний ліміт зняття грошей
 # *   `withdrawn_today` — сума вже знятих за поточний день
 
+#
+# class BankCard:
+#     def __init__(self, owner, balance, pin, daily_limit, withdrawn_today):
+#         self.owner = owner
+#         self.balance = balance
+#         self.pin = pin
+#         self.daily_limit = daily_limit
+#         self.withdrawn_today = withdrawn_today
 
-class BankCard:
-    def __init__(self, owner, balance, pin, daily_limit, withdrawn_today):
-        self.owner = owner
-        self.balance = balance
-        self.pin = pin
-        self.daily_limit = daily_limit
-        self.withdrawn_today = withdrawn_today
+# **Методи:**
+#
+# 1.  **Метод авторизації по пін-коду**
+#     *   Логіка: перевіряє, чи співпадає введений код з піном картки.
+# Якщо ні — доступ до операцій заборонено.
+#     *   Параметри:
+#         *   `self`
+#         *   `entered_pin` — введений користувачем пін-код
 
-    # **Методи:**
-    #
-    # 1.  **Метод авторизації по пін-коду**
-    #     *   Логіка: перевіряє, чи співпадає введений код з піном картки.
-    # Якщо ні — доступ до операцій заборонено.
-    #     *   Параметри:
-    #         *   `self`
-    #         *   `entered_pin` — введений користувачем пін-код
+# def check_pin(self, entered_pin):
+#     if entered_pin == self.pin:
+#         return True
+#
+#     else:
+#         print("Wrong PIN")
+#         return False
 
-    def check_pin(self, entered_pin):
-        if entered_pin == self.pin:
-            return True
+# 2.  **Метод поповнення рахунку**
+#     *   Логіка: додає суму до балансу, але тільки якщо користувач
+# уже авторизований.
+#     *   Параметри:
+#         *   `self`
+#         *   `amount` — сума поповнення
 
-        else:
-            print("Wrong PIN")
-            return False
-
-    # 2.  **Метод поповнення рахунку**
-    #     *   Логіка: додає суму до балансу, але тільки якщо користувач
-    # уже авторизований.
-    #     *   Параметри:
-    #         *   `self`
-    #         *   `amount` — сума поповнення
-
-    def make_deposit(self, amount):
-        entered_pin = int(input("Enter PIN to deposit: "))
-        if self.check_pin(entered_pin):
-            if amount > 0:
-                self.balance += amount
-
-            else:
-                print("Deposit must be > 0")
-
-        else:
-            print("Wrong PIN")
+# def make_deposit(self, amount):
+#     entered_pin = int(input("Enter PIN to deposit: "))
+#     if self.check_pin(entered_pin):
+#         if amount > 0:
+#             self.balance += amount
+#
+#         else:
+#             print("Deposit must be > 0")
+#
+#     else:
+#         print("Wrong PIN")
 
 
 # 3.  **Метод зняття грошей**
@@ -190,22 +190,25 @@ class BankCard:
 #         *   `self`
 #         *   `amount` — сума для зняття
 
-# daily_limit = 20000
+# def withdraw_money(self, amount):
+#     entered_pin = int(input("Enter PIN to withdraw: "))
 #
-#     def withdraw_money(self, amount):
-#         entered_pin = int(input("Enter PIN to deposit: "))
+#     if self.check_pin(entered_pin):
 #
-#         if self.check_pin(entered_pin):
+#         if amount < 0:
+#             print("Withdraw must be positive")
+#             return
 #
-#             if self.daily_limit < daily_limit:
+#         if self.withdrawn_today + amount > self.daily_limit:
+#             print("You're reached your daily limit")
+#             return
 #
-#                 if self.balance >= amount:
-#                     self.balance -= amount
-#
-#                 else:
-#                     print("Deposit must be > 0")
-#             else:
-#                 print("You're reached your daily limit")
+#         if self.balance >= amount:
+#             self.balance -= amount
+#             self.withdrawn_today += amount
 #
 #         else:
-#             print("Wrong PIN")
+#             print("Not enough money")
+#
+#     else:
+#         print("Wrong PIN")
