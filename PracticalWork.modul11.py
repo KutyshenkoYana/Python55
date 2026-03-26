@@ -104,23 +104,23 @@
 # автомобіль їде, або ж ще не готовий в залежності від is_ready.
 
 
-class Car:
-    def __init__(self, brand, year, is_ready=False):
-        self.brand = brand
-        self.year = year
-        self.is_ready = is_ready
-
-    def start_engine(self):
-        self.is_ready = True
-
-    def move(self):
-        if self.is_ready is True:
-            print("Car is moving")
-
-        else:
-            print("Car is not moving")
-
-
-car1 = Car("Ford", 2010, False)
-car1.start_engine()
-car1.move()
+# class Car:
+#     def __init__(self, brand, year, is_ready=False):
+#         self.brand = brand
+#         self.year = year
+#         self.is_ready = is_ready
+#
+#     def start_engine(self):
+#         self.is_ready = True
+#
+#     def move(self):
+#         if self.is_ready is True:
+#             print("Car is moving")
+#
+#         else:
+#             print("Car is not moving")
+#
+#
+# car1 = Car("Ford", 2010, False)
+# car1.start_engine()
+# car1.move()
