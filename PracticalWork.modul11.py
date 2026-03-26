@@ -114,7 +114,7 @@
 #         self.is_ready = True
 #
 #     def move(self):
-#         if self.is_ready is True:
+#         if self.is_ready:
 #             print("Car is moving")
 #
 #         else:
@@ -124,3 +124,88 @@
 # car1 = Car("Ford", 2010, False)
 # car1.start_engine()
 # car1.move()
+
+## Завдання 1 — Клас `BankCard` з лімітами та пін-кодом
+# Створіть клас **BankCard** з атрибутами:
+#
+# *   `owner` — власник картки
+# *   `balance` — поточний баланс
+# *   `pin` — пін-код
+# *   `daily_limit` — денний ліміт зняття грошей
+# *   `withdrawn_today` — сума вже знятих за поточний день
+
+
+class BankCard:
+    def __init__(self, owner, balance, pin, daily_limit, withdrawn_today):
+        self.owner = owner
+        self.balance = balance
+        self.pin = pin
+        self.daily_limit = daily_limit
+        self.withdrawn_today = withdrawn_today
+
+    # **Методи:**
+    #
+    # 1.  **Метод авторизації по пін-коду**
+    #     *   Логіка: перевіряє, чи співпадає введений код з піном картки.
+    # Якщо ні — доступ до операцій заборонено.
+    #     *   Параметри:
+    #         *   `self`
+    #         *   `entered_pin` — введений користувачем пін-код
+
+    def check_pin(self, entered_pin):
+        if entered_pin == self.pin:
+            return True
+
+        else:
+            print("Wrong PIN")
+            return False
+
+    # 2.  **Метод поповнення рахунку**
+    #     *   Логіка: додає суму до балансу, але тільки якщо користувач
+    # уже авторизований.
+    #     *   Параметри:
+    #         *   `self`
+    #         *   `amount` — сума поповнення
+
+    def make_deposit(self, amount):
+        entered_pin = int(input("Enter PIN to deposit: "))
+        if self.check_pin(entered_pin):
+            if amount > 0:
+                self.balance += amount
+
+            else:
+                print("Deposit must be > 0")
+
+        else:
+            print("Wrong PIN")
+
+
+# 3.  **Метод зняття грошей**
+#     *   Логіка:
+#         *   перевірити, чи авторизований користувач
+#         *   перевірити, чи вистачає грошей на балансі
+#         *   перевірити, чи не буде перевищено `daily_limit`
+#         *   якщо все ок — зменшити баланс і збільшити `withdrawn_today`
+#     *   Параметри:
+#         *   `self`
+#         *   `amount` — сума для зняття
+
+# daily_limit = 20000
+#
+#     def withdraw_money(self, amount):
+#         entered_pin = int(input("Enter PIN to deposit: "))
+#
+#         if self.check_pin(entered_pin):
+#
+#             if self.daily_limit < daily_limit:
+#
+#                 if self.balance >= amount:
+#                     self.balance -= amount
+#
+#                 else:
+#                     print("Deposit must be > 0")
+#             else:
+#                 print("You're reached your daily limit")
+#
+#         else:
+#             print("Wrong PIN")
