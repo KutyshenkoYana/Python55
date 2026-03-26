@@ -59,3 +59,45 @@
 # radius_area = Circle(10)
 #
 # print(radius_area.get_area())
+
+# Завдання 4
+# Створіть клас BankAccount з атрибутами owner та balance.
+# Додайте метод deposit для поповнення рахунку
+# Додайте метод withdraw для зняття грошей з рахунку
+# Додайте метод info для виведення інформації про баланс
+
+# class BankAccount:
+#     def __init__(self, owner, balance):
+#         self.owner = owner.capitalize()
+#         self.balance = balance
+#
+#
+#     def deposit(self, deposit_amount):
+#         self.balance += deposit_amount
+#
+#
+#     def withdraw(self, amount):
+#         if self.balance >= amount:
+#             self.balance -= amount
+#
+#         else:
+#             print("You don't have enough money to withdraw")
+#
+#
+#     def info(self):
+#         print(f"{self.owner}'s balance is {self.balance}")
+#
+# owner1 = BankAccount("Yana", 10000)
+#
+# owner1.deposit(1000)
+# owner1.withdraw(10000)
+# owner1.info()
+
+# Завдання 5
+# Створіть клас Car з атрибутами brand(марка), year(рік
+# випуску), is_ready(чи готовий до поїздки, за замовчування
+# False).
+# Додайте метод start_engine який заводить двигун, і змінює
+# атрибут is_ready
+# Додайте метод move який виводить повідомлення, що
+# автомобіль їде, або ж ще не готовий в залежності від is_ready.
