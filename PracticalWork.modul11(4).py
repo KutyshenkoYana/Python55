@@ -166,3 +166,17 @@
 #
 #     def __add__(self, other):
 #         return Cart(self._items + other._items, self._total + other._total)
+#
+#
+# cart1 = Cart(["Banana", "Apple", "Orange", "Pineapple"], 150)
+# cart2 = Cart(["Apple", "Orange", "Kiwi"], 100)
+#
+# print("Cart1 items: ", len(cart1))
+# print("Cart2 items: ", len(cart2))
+#
+# print("Cart1: ", cart1)
+# print("Cart2: ", cart2)
+#
+# cart3 = cart1 + cart2
+# print("Cart3 items: ", len(cart3))
+# print("Cart3: ", cart3)
