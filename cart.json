@@ -1,0 +1,14 @@
+{
+    "User": "Alex",
+    "Total": 25,
+    "Items": [
+        {
+            "Item": "Banana",
+            "Price": 5
+        },
+        {
+            "Item": "Milk",
+            "Price": 20
+        }
+    ]
+}
