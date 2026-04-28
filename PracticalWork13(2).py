@@ -149,3 +149,69 @@ class Student:
 #
 # student3.save_json("student3.json")
 # student3.load_json("student3.json")
+
+
+# Завдання 1
+# Напишіть програму для збереження даних про музичні
+# групи у вигляді словника, де ключ – назва групи, значення –
+# список альбомів.
+# Напишіть функціонал:
+#  додати новий гурт
+#  додати новий альбом
+#  зберегти дані через json
+#  зберегти дані через pickle
+#  завантажити дані через json
+#  завантажити дані через pickle
+
+
+# ADD FRIENDS
+def add_friends(friends: dict[str, list[str]]):
+    friend1 = input("Enter name: ")
+    friend2 = input("Enter name: ")
+
+    if friend1 not in friends:
+        friends[friend1] = []
+
+    if friend2 not in friends:
+        friends[friend2] = []
+
+    friends[friend1].append(friend2)
+    friends[friend2].append(friend1)
+
+
+# SAVE JSON
+def save_json(
+    friends: dict[str, list[str]],
+    filename: str = "friends.json",
+):
+    with open(filename, "w", encoding="utf-8") as f_out:
+        json.dump(friends, f_out, indent=4, ensure_ascii=False)
+
+
+# LOAD JSON
+def load_json(filename: str = "friends.json") -> dict[str, list[str]]:
+    with open(filename, encoding="utf-8") as f_in:
+        return json.load(f_in)
+
+
+# SAVE PICKLE
+def save_pickle(
+    friends: dict[str, list[str]],
+    filename: str = "friends.pickle",
+):
+    with open(filename, "wb", encoding="utf-8") as f_out:
+        pickle.dump(friends, f_out)
+
+
+# LOAD PICKLE
+def load_pickle(filename: str = "friends.pickle") -> dict[str, list[str]]:
+    with open(filename, "rb") as f_in:
+        return pickle.load(f_in)
+
+
+# friends = {}
+# add_friends(friends)
+# add_friends(friends)
+#
+# save_json(friends)
+# save_json(friends)
