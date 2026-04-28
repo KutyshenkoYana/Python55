@@ -46,13 +46,106 @@ def load_products_pickle(filename: str = "products.pickle") -> list[str]:
         return pickle.load(f_in)
 
 
-products = []
+# products = []
+#
+# add_products(products)
+# add_products(products)
+#
+# save_products_json(products)
+# save_products_pickle(products)
+#
+# load_products_json(filename="products.json")
+# load_products_pickle(filename="products.pickle")
 
-add_products(products)
-add_products(products)
 
-save_products_json(products)
-save_products_pickle(products)
+# Завдання 2
+# Напишіть клас Student
+# Атрибути:
+#  name – ім’я
+#  specialization – спеціалізація
+#  grades – список оцінок
+# Методи:
+#  add_grade(grade) – додати нову оцінку
+#  show_info() – вивести ім’я, спеціалізацію та середню
+# оцінку
+# Практичне завдання
+# Створіть список з трьох студентів. Збережіть цей список
+# використовуючи pickle та json.
+# Завантажте дані за допомогою pickle та json.
 
-load_products_json(filename="products.json")
-load_products_pickle(filename="products.pickle")
+
+class Student:
+    def __init__(
+        self,
+        name: str,
+        specialization: str,
+        grades: list[int],
+    ):
+        self._name = name
+        self._specialization = specialization
+        self._grades = grades
+
+    def add_grade(
+        self,
+        grade: int,
+    ):
+        self._grades.append(grade)
+        print(f"{grade} added.")
+
+    def show_info(self):
+        print(f"Name: {self._name}.")
+        print(f"Specialization: {self._specialization}.")
+        print(f"Average grade: {self._average_grade()}")
+
+    def _average_grade(self):
+        if len(self._grades) == 0:
+            return None
+
+        average = sum(self._grades) / len(self._grades)
+        return average
+
+    def save_json(
+        self,
+        filename: str = "student.json",
+    ):
+        with open(filename, "w", encoding="utf-8") as f_out:
+            json.dump(self._get_state_dict(), f_out, indent=4)
+
+    def _get_state_dict(self):
+        return {
+            "Name": self._name,
+            "Specialization": self._specialization,
+            "Grades": self._grades,
+        }
+
+    def _set_state_dict(
+        self,
+        state_dict: dict,
+    ):
+        self._name = state_dict["Name"]
+        self._specialization = state_dict["Specialization"]
+        self._grades = state_dict["Grades"]
+
+    def load_json(self, filename: str = "student.json"):
+        with open(filename) as f_in:
+            state_dict = json.load(f_in)
+
+        self._set_state_dict(state_dict)
+
+    def save_pickle(self, filename: str = "student.pickle"):
+        with open(filename, "w") as f_out:
+            pickle.dump(self._get_state_dict(), f_out)
+
+    def load_pickle(self, filename: str = "student.pickle"):
+        with open(filename) as f_in:
+            state_dict = pickle.load(f_in)
+
+        self._set_state_dict(state_dict)
+
+
+# student1 = Student("John", "IT", [10,9])
+# student2 = Student("Anna", "Biology", [5,9])
+# student3 = Student("Yana", "Math", [12,7])
+#
+# student3.save_json("student3.json")
+# student3.load_json("student3.json")
