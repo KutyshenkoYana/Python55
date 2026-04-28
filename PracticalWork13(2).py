@@ -215,3 +215,36 @@ def load_pickle(filename: str = "friends.pickle") -> dict[str, list[str]]:
 #
 # save_json(friends)
 # save_json(friends)
+
+
+# Контакти (телефонна книга)
+# Реалізуйте телефонну книгу.
+# Контакт містить:
+# ім’я
+# телефон
+# email
+# Функціонал:
+# додати контакт
+# видалити контакт
+# знайти контакт за ім’ям
+# показати всі контакти
+# зберегти/завантажити через json
+# зберегти/завантажити через pickle
+
+
+def add_contact(book: dict[str, dict[str, str]]) -> None:
+    name = input("Enter contact name: ")
+    phone_number = input("Enter contact phone number: ")
+    email = input("Enter contact email: ")
+
+    book[name] = {
+        "phone": phone_number,
+        "email": email,
+    }
+
+
+def save_contact_json(
+    book: dict[str, dict[str, str]], filename: str = "contact.json"
+) -> None:
+    with open(filename, "w", encoding="utf-8") as f_out:
+        json.dump(book, f_out, indent=4, ensure_ascii=False)
