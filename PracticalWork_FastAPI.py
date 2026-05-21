@@ -10,10 +10,10 @@
 # uvicorn main:app --port 8000 –host localhost --reload
 # Напишіть клієнта який робить запит на сервер
 
-from fastapi import FastAPI
-from pydantic import BaseModel
-
-app = FastAPI()
+# from fastapi import FastAPI
+# from pydantic import BaseModel
+#
+# app = FastAPI()
 
 
 # class Response(BaseModel):
@@ -45,12 +45,83 @@ app = FastAPI()
 # сервери
 
 
-class GreetingResponse(BaseModel):
-    message: str
+# class GreetingResponse(BaseModel):
+#     message: str
+#
+#
+# @app.get("/greeting")
+# def hello() -> GreetingResponse:
+#     return GreetingResponse(
+#         message="Hello from Server!",
+#     )
 
 
-@app.get("/greeting")
-def hello() -> GreetingResponse:
-    return GreetingResponse(
-        message="Hello from Server!",
-    )
+# Завдання 4
+# Напишіть сервер для симуляції роботи бібліотеки.
+# Дані про книги знаходяться у файлі books.json
+# Напишіть модель на pydentic для книги з такими
+# даними:
+# ● id
+# ● title
+# ● author
+# ● year
+# ● pages
+# Функціонал:
+# 1. Отримання всіх книг
+# ○ шлях – books
+# ○ метод – GET
+
+# 2. Отримання даних за ID книги
+# ○ шлях – books/{book_id}
+# ○ метод – GET
+
+# 3. Додавання нової книги
+# ○ шлях – books
+# ○ метод – POST
+
+# 4. Видалення книги за ID
+# ○ шлях – books/{book_id}
+# ○ метод – DELETE
+
+import json
+
+import pydantic
+from fastapi import FastAPI
+
+app = FastAPI()
+
+
+class Book(pydantic.BaseModel):
+    id: int
+    title: str
+    author: str
+    year: int
+    pages: int
+
+
+@app.get("/books")
+def get_all_books() -> list[Book]:
+    with open("books.json") as f:
+        books = json.load(f)
+        return books
+
+
+@app.get("/books/{id}")
+def get_book(id: int) -> Book:
+    with open("books.json") as f:
+        books = json.load(f)
+
+    for book in books:
+        if book["id"] == id:
+            return book
+
+
+@app.post("/books")
+def create_book(book: Book) -> dict[str, str]:
+    with open("books.json") as f:
+        books = json.load(f)
+
+    books.append(book.model_dump())
+    with open("books.json", "w") as f:
+        json.dump(books, f)
+    return {"message": "Book added"}
