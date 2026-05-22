@@ -18,3 +18,6 @@ while True:
 # docker build -t fastapi_app .
 
 # pip freeze > requirements.txt - all my installed library
+
+# docker run --port 8080:8080
+# docker run -p 8080:8080 [назва образу]
