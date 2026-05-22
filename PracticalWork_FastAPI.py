@@ -123,5 +123,5 @@ def create_book(book: Book) -> dict[str, str]:
 
     books.append(book.model_dump())
     with open("books.json", "w") as f:
-        json.dump(books, f)
+        json.dump(books, f, indent=4)
     return {"message": "Book added"}

@@ -1,14 +1,37 @@
-[{
-  "id": "1",
-  "title": "Our First Day",
-  "author": "Yana Kutyshenko",
-  "year": 2026,
-  "pages": 345
-},
-{
-  "id": "2",
-  "title": "Our Second Day",
-  "author": "Yana Kutyshenko",
-  "year": 2026,
-  "pages": 276
-}]
+[
+    {
+        "id": 1,
+        "title": "Our First Day",
+        "author": "Yana Kutyshenko",
+        "year": 2026,
+        "pages": 345
+    },
+    {
+        "id": 2,
+        "title": "Our Second Day",
+        "author": "Yana Kutyshenko",
+        "year": 2026,
+        "pages": 276
+    },
+    {
+        "id": 3,
+        "title": "Another new day",
+        "author": "Yana Kutyshenko",
+        "year": 2025,
+        "pages": 67
+    },
+    {
+        "id": 4,
+        "title": "Another new day",
+        "author": "Yana Kutyshenko",
+        "year": 2025,
+        "pages": 67
+    },
+    {
+        "id": 5,
+        "title": "New book",
+        "author": "Yana",
+        "year": 2027,
+        "pages": 50
+    }
+]
