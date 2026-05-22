@@ -9,4 +9,4 @@ WORKDIR app
 COPY ./ ./
 
 #command to run
-CMD ["python", "docker_practice.py"]
+CMD ["python", "main.py"]
